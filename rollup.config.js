@@ -1,13 +1,13 @@
 import babel from 'rollup-plugin-babel';
-import pkg from './package';
+import pkg from './package.json';
 
 export default [
     {
-        entry: 'src/main.js',
+        input: 'src/main.js',
         external: [],
-        targets: [
-            { dest: pkg.main, format: 'cjs' },
-            { dest: pkg.main, format: 'esm' }
+        output: [
+            { file: pkg.main, format: 'cjs' },
+            { file: pkg.module, format: 'esm' }
         ],
         plugins: [
             babel({
