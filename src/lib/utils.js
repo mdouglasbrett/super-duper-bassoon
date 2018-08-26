@@ -22,11 +22,7 @@ import moment from "moment";
 //   return '';
 // }
 
-/**
- * @param {string} dateString
- * @returns {string}
- */
-const createDirectoryPath = (dateString = "") => {
+const createDirectoryPath = (dateString: string): string => {
   const DIR_FORMAT = /(\d{4})-(\d{1,2})-(\d{1,2})(.*)/;
   const dir = DIR_FORMAT.exec(dateString);
   if (dir) {
@@ -35,69 +31,56 @@ const createDirectoryPath = (dateString = "") => {
   return "";
 };
 
-function createPostUrl(pathName = "", fileName = "") {
+const createPostUrl = (pathName: string, fileName: string): string => {
   const newPath = pathName.replace("dist/", "/");
   return `${newPath}/${fileName}`;
-}
-/**
- * @param {string} dateString
- * @returns {Date}
- */
-function transformStringToDate(dateString = "") {
+};
+
+const transformStringToDate = (dateString: string): Date => {
   return new Date(dateString);
-}
+};
 
-/**
- * @param {Date} date
- * @returns {string}
- */
-function wrapDate(date) {
+const wrapDate = (date: Date): string => {
   return moment(date).format("MMM Do YYYY");
-}
+};
 
 /**
  * @param {Date} date
  * @returns {string}
  */
-function transformDateToIsoString(date) {
+const transformDateToIsoString = (date: Date): string => {
   return date.toISOString();
-}
+};
 
 // Array functions
 
-/**
- * @param  {Array} arr
- * @return {Set}  Set of unique items
- */
-function deDupeList(arr = []) {
+const deDupeList = (arr: Array<any>): Set<any> => {
   const deDupe = new Set();
   arr.forEach(i => {
     deDupe.add(i);
   });
   return deDupe;
-}
+};
 
 // File manipulation (reading, writing and moving)
 
 /**
+ * TODO: don't think I need this...
  * @param {string} filename
  * @returns {string}
  */
-function renameFile(filename = "") {
-  return `${path.basename(filename, ".md")}.html`;
-}
+// function renameFile(filename = "") {
+//   return `${path.basename(filename, ".md")}.html`;
+// }
 
-/**
- * @param {Object} file
- * @returns {Object}
- */
-function fileContent(file = {}) {
+// TODO: WIP types here
+const fileContent = (file: any = {}): { meta: any, main: string } => {
   const { attributes, body } = frontMatter(file);
   return {
     meta: attributes,
     main: marked(body)
   };
-}
+};
 
 /*
  * TODO: Use this promise in conjunction with a generator/run function in the contentParser?
@@ -106,18 +89,19 @@ function fileContent(file = {}) {
  * @param {Object} options
  * @returns {*}
  */
-function promisifiedFileReader(filePath, options) {
+function promisifiedFileReader(filePath: string, options: any): Promise<any> {
   return new Promise((resolve, reject) =>
+    // $FlowFixMe
     fs.readFile(filePath, options, (err, contents) => (err ? reject(err) : resolve(contents)))
   );
 }
 
 export default {
   // createArticleSummary,
-  // deDupeList,
+  // renameFile,
+  deDupeList,
   createDirectoryPath,
   createPostUrl,
-  renameFile,
   fileContent,
   wrapDate,
   transformStringToDate,
