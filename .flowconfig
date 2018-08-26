@@ -6,7 +6,12 @@
 [libs]
 
 [lints]
+sketchy-null=warn
+sketchy-number=warn
+untyped-type-input=warn
+unclear-type=warn
 
 [options]
 
 [strict]
+
