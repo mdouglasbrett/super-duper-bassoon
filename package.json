@@ -5,7 +5,11 @@
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "flow": "flow",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "test": "node test/test.js",
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,7 +27,9 @@
   "homepage": "https://github.com/mdouglasbrett/super-duper-bassoon#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.79.1",
     "rollup": "^0.65.0",
     "rollup-plugin-babel": "^3.0.7"
   }
