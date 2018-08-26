@@ -1,0 +1,24 @@
+{
+  "name": "super-duper-bassoon",
+  "version": "0.0.1",
+  "description": "A static site generation engine",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdouglasbrett/super-duper-bassoon.git"
+  },
+  "keywords": [
+    "static-site",
+    "node"
+  ],
+  "author": "Michael Brett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mdouglasbrett/super-duper-bassoon/issues"
+  },
+  "homepage": "https://github.com/mdouglasbrett/super-duper-bassoon#readme"
+}
