@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/mdouglasbrett/super-duper-bassoon/issues"
   },
-  "homepage": "https://github.com/mdouglasbrett/super-duper-bassoon#readme"
+  "homepage": "https://github.com/mdouglasbrett/super-duper-bassoon#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-flow": "^6.23.0"
+  }
 }
