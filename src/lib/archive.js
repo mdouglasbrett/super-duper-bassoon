@@ -1,9 +1,8 @@
 // @flow
-"use strict";
 
-const fs = require("fs");
-const data = require("./site.json");
-const template = require("./templates");
+import fs from "fs";
+import data from "./site.json";
+import template from "./templates";
 
 const rootName = "posts";
 
