@@ -6,12 +6,11 @@ import template from "./templates";
 
 const rootName = "posts";
 
-/*
- * TODO: This is disgusting! Need to apply a bit more thought to this
- * function
- */
-
-const archiveBuilder = (archiveData, maxPostsPerPage = 5) => {
+// Not sure I am going to use this in the package as it is currently set up...
+// This function writes files, and I think the package is going to return a
+// Promise that has to be resolved the other side.
+// TODO: annotate this function
+const archiveBuilder = (archiveData: any, maxPostsPerPage: number = 5): void => {
   if (archiveData.posts.length) {
     let posts = [];
     let postCount = 0;
