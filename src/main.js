@@ -1,15 +1,16 @@
 // @flow
-import fs from "fs";
-import contentParser from "./lib/utils";
+import fs from 'fs';
+import contentParser from './lib/utils';
+
+// TODO: obvs
+type Config = any;
 
 const dataObjectBuilder = async (config: Config): Promise<any> => {
   const { pagesPath, postsPath, meta } = config;
-  const pages = await Promise.all(contentParser(fs.readdirSync(pagesPath), pagesPath)).then(
-    console.log("All pages parsed")
+  const pages = await Promise.all(contentParser(fs.readdirSync(pagesPath), pagesPath));
+  const posts = await Promise.all(contentParser(fs.readdirSync(postsPath), postsPath)).then(
+    (returnedPosts: any) => returnedPosts.sort((a, b) => b.date - a.date)
   );
-  const posts = await Promise.all(contentParser(fs.readdirSync(postsPath), postsPath))
-    .then((posts: any) => posts.sort((a, b) => b.date - a.date))
-    .then(console.log("All posts parsed"));
   // const tags = deDupeList(posts.map(p => p.tags).reduce((a, b) => a.concat(b)));
   return new Promise((resolve, reject) => {
     resolve({
