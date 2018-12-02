@@ -5,16 +5,17 @@ import frontMatter from 'front-matter';
 import marked from 'marked';
 import moment from 'moment';
 
-// const createArticleSummary = (article: string): string => {
-//   const SUMMARIZE_MARKER = /(<!-+[sum+arize]{9}-+>)/;
-//   if (SUMMARIZE_MARKER.exec(article)) {
-//     return article.split(SUMMARIZE_MARKER.exec(article)[1])[0];
-//   }
-//   return '';
-// };
+const DIR_FORMAT = /(\d{4})-(\d{1,2})-(\d{1,2})(.*)/;
+const SUMMARIZE_MARKER = /(<!-+[sum+arize]{9}-+>)/;
+
+const createArticleSummary = (article: string): string => {
+  if (SUMMARIZE_MARKER.exec(article)) {
+    return article.split(SUMMARIZE_MARKER.exec(article)[1])[0];
+  }
+  return '';
+};
 
 const createDirectoryPath = (dateString: string): string => {
-  const DIR_FORMAT = /(\d{4})-(\d{1,2})-(\d{1,2})(.*)/;
   const dir = DIR_FORMAT.exec(dateString);
   if (dir) {
     return `dist/${dir[1]}/${dir[2]}/${dir[3]}`;
@@ -69,8 +70,10 @@ const contentParser = (
 ): Array<Promise<any>> =>
   arr.map((i) =>
     promisifiedFileReader(path.join(fileType, i), 'utf8').then((content) => {
-      const { meta, main } = fileContent(content);
+      const readContent = fileContent(content);
+      const { meta, main } = readContent;
       const { title, tags, draftDate } = meta;
+      const summary = createArticleSummary(readContent);
       const fileName = renameFile(i);
       let date;
       let formattedDate;
@@ -91,7 +94,8 @@ const contentParser = (
         draftDate,
         date,
         directoryPath,
-        postUrl
+        postUrl,
+        summary
       };
     })
   );
