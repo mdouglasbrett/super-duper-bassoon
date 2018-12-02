@@ -11,6 +11,7 @@
         "semi": "error",
         "implicit-arrow-linebreak": "off",
         "arrow-parens": "off",
-        "function-paren-newline": "off"
+        "function-paren-newline": "off",
+        "max-len": "off"
     }
 }
