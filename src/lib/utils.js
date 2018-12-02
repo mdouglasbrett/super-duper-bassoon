@@ -22,7 +22,9 @@ import moment from 'moment';
 //           ...archiveData,
 //           posts,
 //           newerPosts:
-//             pageCount !== 0 ? `${rootName}${pageCount - 1 === 0 ? "" : pageCount - 1}.html` : null,
+//             pageCount !== 0 ? `${rootName}${pageCount - 1 === 0
+//             ? "" : pageCount - 1}.html`
+//             : null,
 //           olderPosts:
 //             (pageCount + 1) * maxPostsPerPage < data.posts.length
 //               ? `${rootName}${pageCount + 1}.html`
