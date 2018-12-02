@@ -1,3 +1,16 @@
 {
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "parser": "babel-eslint",
+    "plugins": [
+        "flowtype",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "comma-dangle": "off",
+        "semi": "error",
+        "implicit-arrow-linebreak": "off",
+        "arrow-parens": "off",
+        "function-paren-newline": "off"
+    }
 }
