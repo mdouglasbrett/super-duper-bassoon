@@ -1,9 +1,7 @@
 // @flow
 import fs from 'fs';
 import contentParser from './lib/utils';
-
-// TODO: obvs
-type Config = any;
+import type Config from '../flow-typed/super-duper-bassoon';
 
 const dataObjectBuilder = async (config: Config): Promise<any> => {
   const { pagesPath, postsPath, meta } = config;
@@ -18,7 +16,7 @@ const dataObjectBuilder = async (config: Config): Promise<any> => {
       posts,
       meta
     });
-    reject();
+    reject(new Error('Something went wrong :('));
   });
 };
 
