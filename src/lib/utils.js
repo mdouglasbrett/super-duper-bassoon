@@ -55,11 +55,14 @@ const fileContent = (file: any): { meta: any, main: string } => {
 
 // TODO: Use this promise in conjunction with a generator/run function in the contentParser?
 // See 'The Miracle Of Generators' by Bodil Stokke
-const promisifiedFileReader = (filePath: string, options: any): Promise<any> =>
+const promisifiedFileReader = (
+  filePath: string,
+  ...options: any
+): Promise<any> =>
   new Promise((resolve, reject) =>
     fs.readFile(
       filePath,
-      options,
+      ...options,
       (err, contents) => (err ? reject(err) : resolve(contents))
     )
   );
