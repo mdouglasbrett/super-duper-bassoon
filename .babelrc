@@ -7,5 +7,10 @@
       "modules": false
     }],
     "flow"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [["env"], "flow"]
+    }
+  }
 }
