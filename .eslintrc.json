@@ -3,10 +3,12 @@
     "parser": "babel-eslint",
     "plugins": [
         "flowtype",
-        "prettier"
+        "prettier",
+        "mocha"
     ],
     "rules": {
         "prettier/prettier": "error",
+        "mocha/no-exclusive-tests": "error",
         "comma-dangle": "off",
         "semi": "error",
         "implicit-arrow-linebreak": "off",
