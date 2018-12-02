@@ -27,7 +27,8 @@ const createPostUrl = (pathName: string, fileName: string): string => {
   return `${newPath}/${fileName}`;
 };
 
-const transformStringToDate = (dateString: string): Date => new Date(dateString);
+const transformStringToDate = (dateString: string): Date =>
+  new Date(dateString);
 
 const wrapDate = (date: Date): string => moment(date).format('MMM Do YYYY');
 
@@ -40,7 +41,8 @@ const transformDateToIsoString = (date: Date): string => date.toISOString();
 // };
 
 // TODO: don't think I need this...
-const renameFile = (filename: string): string => `${path.basename(filename, '.md')}.html`;
+const renameFile = (filename: string): string =>
+  `${path.basename(filename, '.md')}.html`;
 
 const fileContent = (file: any): { meta: any, main: string } => {
   const { attributes, body } = frontMatter(file);
@@ -54,10 +56,17 @@ const fileContent = (file: any): { meta: any, main: string } => {
 // See 'The Miracle Of Generators' by Bodil Stokke
 const promisifiedFileReader = (filePath: string, options: any): Promise<any> =>
   new Promise((resolve, reject) =>
-    fs.readFile(filePath, options, (err, contents) => (err ? reject(err) : resolve(contents)))
+    fs.readFile(
+      filePath,
+      options,
+      (err, contents) => (err ? reject(err) : resolve(contents))
+    )
   );
 
-const contentParser = (arr: Array<string>, fileType: string): Array<Promise<any>> =>
+const contentParser = (
+  arr: Array<string>,
+  fileType: string
+): Array<Promise<any>> =>
   arr.map((i) =>
     promisifiedFileReader(path.join(fileType, i), 'utf8').then((content) => {
       const { meta, main } = fileContent(content);
