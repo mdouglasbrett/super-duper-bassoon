@@ -18,7 +18,7 @@ export default [
         extensions,
         exclude: 'node_modules/**/*'
       }),
-      resolve(),
+      resolve({ extensions }),
       commonjs()
     ]
   }
