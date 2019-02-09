@@ -7,25 +7,16 @@ import moment from 'moment';
 const DIR_FORMAT: RegExp = /(\d{4})-(\d{1,2})-(\d{1,2})(.*)/;
 const SUMMARIZE_MARKER: RegExp = /(<!-+[sum+arize]{9}-+>)/;
 
-const createArticleSummary = (article: string): string => {
-  if (SUMMARIZE_MARKER.exec(article)) {
-    return article.split(SUMMARIZE_MARKER.exec(article)[1])[0];
-  }
-  return '';
-};
+const createArticleSummary = (article: string = ''): string =>
+  SUMMARIZE_MARKER.exec(article)
+    ? article.split(SUMMARIZE_MARKER.exec(article)[1])[0]
+    : '';
 
-const createDirectoryPath = (dateString: string): string => {
-  const dir = DIR_FORMAT.exec(dateString);
-  if (dir) {
-    return `dist/${dir[1]}/${dir[2]}/${dir[3]}`;
-  }
-  return '';
-};
+const createDirectoryPath = (dateString: string): string =>
+  DIR_FORMAT.exec(dateString) ? `dist/${dir[1]}/${dir[2]}/${dir[3]}` : '';
 
-const createPostUrl = (pathName: string, fileName: string): string => {
-  const newPath = pathName.replace('dist/', '/');
-  return `${newPath}/${fileName}`;
-};
+const createPostUrl = (pathName: string = '', fileName: string = ''): string =>
+  `${pathName.replace('dist/', '/')}/${fileName}`;
 
 const transformStringToDate = (dateString: string): Date =>
   new Date(dateString);
