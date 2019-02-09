@@ -1,9 +1,7 @@
-// @flow
 import fs from 'fs';
-import contentParser from './lib/utils';
-import type Config from '../flow-typed/super-duper-bassoon';
+import contentParser from './lib/utils.ts';
 
-const dataObjectBuilder = async (config: Config): Promise<any> => {
+const dataObjectBuilder = async (config: any): Promise<any> => {
   const { pagesPath, postsPath, meta } = config;
   // TODO: isn't the point of this that everything is async? In that case we should be using readdir...
   const pages = await Promise.all(

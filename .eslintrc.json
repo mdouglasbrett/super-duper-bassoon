@@ -1,8 +1,7 @@
 {
     "extends": "airbnb-base",
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "plugins": [
-        "flowtype",
         "prettier",
         "mocha"
     ],

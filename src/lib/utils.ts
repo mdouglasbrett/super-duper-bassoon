@@ -1,12 +1,11 @@
-// @flow
 import fs from 'fs';
 import path from 'path';
 import frontMatter from 'front-matter';
 import marked from 'marked';
 import moment from 'moment';
 
-const DIR_FORMAT = /(\d{4})-(\d{1,2})-(\d{1,2})(.*)/;
-const SUMMARIZE_MARKER = /(<!-+[sum+arize]{9}-+>)/;
+const DIR_FORMAT: RegExp = /(\d{4})-(\d{1,2})-(\d{1,2})(.*)/;
+const SUMMARIZE_MARKER: RegExp = /(<!-+[sum+arize]{9}-+>)/;
 
 const createArticleSummary = (article: string): string => {
   if (SUMMARIZE_MARKER.exec(article)) {
@@ -45,7 +44,7 @@ const transformDateToIsoString = (date: Date): string => date.toISOString();
 const renameFile = (filename: string): string =>
   `${path.basename(filename, '.md')}.html`;
 
-const fileContent = (file: any): { meta: any, main: string } => {
+const fileContent = (file: any): { meta: any; main: string } => {
   const { attributes, body } = frontMatter(file);
   return {
     meta: attributes,

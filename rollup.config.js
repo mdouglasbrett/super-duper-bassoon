@@ -3,9 +3,11 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
+const extensions = ['.js', '.ts'];
+
 export default [
   {
-    input: 'src/main.js',
+    input: 'src/main.ts',
     external: ['fs', 'path'],
     output: [
       { file: pkg.main, format: 'cjs' },
@@ -13,6 +15,7 @@ export default [
     ],
     plugins: [
       babel({
+        extensions,
         exclude: 'node_modules/**/*'
       }),
       resolve(),
