@@ -13,7 +13,8 @@ const createArticleSummary = (article: string = ''): string =>
     : '';
 
 const createDirectoryPath = (dateString: string): string =>
-  DIR_FORMAT.exec(dateString) ? `dist/${dir[1]}/${dir[2]}/${dir[3]}` : '';
+    const dir = DIR_FORMAT.exec(dateString);
+   dir ? `dist/${dir[1]}/${dir[2]}/${dir[3]}` : '';
 
 const createPostUrl = (pathName: string = '', fileName: string = ''): string =>
   `${pathName.replace('dist/', '/')}/${fileName}`;
